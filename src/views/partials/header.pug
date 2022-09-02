@@ -1,0 +1,27 @@
+header
+    a(href='/').header__logo
+        i.fab.fa-youtube
+    h2 #{pageTitle}
+    nav 
+        ul
+            if loggedIn 
+                li  
+                    a(href="/users/edit") 프로필 수정
+                li
+                    a(href="/users/logout") 로그아웃
+                li
+                    a(href="/videos/upload") 동영상 업로드 
+                li  
+                    a(href=`/users/${loggedInUser._id}`)
+                        if loggedInUser.avaterUrl
+                            img.header__avatar(src='/' + loggedInUser.avaterUrl)
+                        else 
+                            i.fa-solid.fa-user
+            else
+                li
+                    a(href="/join") 회원가입
+                li
+                    a(href="/login") 로그인
+            li
+                a(href="/search")
+                    i.fas.fa-magnifying-glass
