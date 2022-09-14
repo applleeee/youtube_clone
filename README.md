@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # youtube_clone
 
 / : 홈
@@ -18,7 +17,3 @@
 
 /videos/comments : 비디오 댓글
 /vidoes/comments/delete : 비디오 댓글 삭제
-=======
-# youtube_clone
-
->>>>>>> 3d56e735527d06c899ce66371cd52eb613986432

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 extends base
 
 block content 
@@ -11,18 +10,4 @@ block content
         include partials/social-login
     div.auth-switch
         span 계정이 없으신가요? 
-=======
-extends base
-
-block content 
-    if errorMessage 
-        span=errorMessage
-    form(method='POST')
-        input(placeholder="아이디", name="username", type="text", required  )
-        input(placeholder="비밀번호", name="password1", type="password", required)
-        input(type="submit", value="로그인")
-        include partials/social-login
-    div.auth-switch
-        span 계정이 없으신가요? 
->>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
         a(href="/join") 회원가입

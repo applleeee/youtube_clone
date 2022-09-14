@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 {
   "ignore": ["webpack.config.js", "src/front/*", "assets/*"],
   "exec": "babel-node src/init.js"
 }
-=======
-{
-  "ignore": ["webpack.config.js", "src/front/*", "assets/*"],
-  "exec": "babel-node src/init.js"
-}
->>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
