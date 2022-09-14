@@ -1,3 +1,5 @@
+include mixin/message
+
 doctype html 
 html(lang="ko")
     head 
@@ -6,6 +8,8 @@ html(lang="ko")
         link(rel="stylesheet" href="/assets/css/style.css")
 
     body 
+        if messages.error 
+            +message("error", messages.error)
         include partials/header.pug
         main
             block content

@@ -29,6 +29,7 @@ export const getEdit = async (req, res) => {
     return res.status(404).render("404", { pageTitle: "video not found" });
   }
   if (String(video.owner) !== String(_id)) {
+    req.flash("error", "권한이 없습니다");
     return res.status(403).redirect("/");
   }
   return res.render("edit-video", {

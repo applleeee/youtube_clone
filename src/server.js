@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import session from "express-session";
+import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import rootRouter from "./Router/rootRouter";
 import userRouter from "./Router/userRouter";
@@ -28,7 +29,7 @@ app.use(
     }),
   })
 );
-
+app.use(flash()); // locals에 message 생성(템플릿에서 사용 가능)
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads")); //uploads폴더 전체에 접근가능하게
 app.use("/assets", express.static("assets"));
