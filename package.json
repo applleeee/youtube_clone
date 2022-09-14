@@ -25,7 +25,10 @@
     "core-js": "^3.22.8",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
+<<<<<<< HEAD
     "express-flash": "^0.0.2",
+=======
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
     "express-session": "^1.17.2",
     "moment": "^2.29.3",
     "mongo": "^0.1.0",

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 extends base.pug
 
 
@@ -8,4 +9,16 @@ block content
         input(name="title", placeholder="Video Title", value=video.title, maxlength=20, required)
         input(name="description", placeholder="Description", value=video.description, required, type="text", maxlength=80)
         input(name="hashtags", placeholder="Hashtags, separated by comma.", value=video.hashtags.join(), required, type="text")
+=======
+extends base.pug
+
+
+
+block content 
+    h4 Update Video
+    form(method="POST")
+        input(name="title", placeholder="Video Title", value=video.title, maxlength=20, required)
+        input(name="description", placeholder="Description", value=video.description, required, type="text", maxlength=80)
+        input(name="hashtags", placeholder="Hashtags, separated by comma.", value=video.hashtags.join(), required, type="text")
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
         input(value="save", type="submit")

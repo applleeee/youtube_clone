@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .profile__data {
   max-width: 420px;
   margin: 0 auto;
@@ -9,3 +10,16 @@
     margin-bottom: 10px;
   }
 }
+=======
+.profile__data {
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  img {
+    margin-bottom: 10px;
+  }
+}
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432

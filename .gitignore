@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 /node_modules
 .env
 /uploads
+=======
+/node_modules
+.env
+/uploads
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
 /assets

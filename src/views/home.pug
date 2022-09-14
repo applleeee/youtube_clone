@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 extends base
 include mixin/video
 
@@ -9,3 +10,16 @@ block content
         else 
             span.empty__message 비디오가 없습니다.
 
+=======
+extends base
+include mixin/video
+
+
+block content
+    div.video-grid
+        each videoInfo in videos
+            +video(videoInfo)
+        else 
+            span.empty__message 비디오가 없습니다.
+
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432

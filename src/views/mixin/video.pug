@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 mixin video(video)
     a(href=`/videos/${video.id}`).video-mixin
         div.video-mixin__thumb(style=`background-image:url(${video.thumbnail});background-size:cover;background-position:center;`)
@@ -7,4 +8,15 @@ mixin video(video)
                 span #{video.owner.username}
                 br
                 span #{video.meta.views}회  
+=======
+mixin video(video)
+    a(href=`/videos/${video.id}`).video-mixin
+        div.video-mixin__thumb(style=`background-image:url(${video.thumbnail});background-size:cover;background-position:center;`)
+        div.video-mixin__data
+            span.video-mixin__title=video.title
+            div.video-mixin__meta
+                span #{video.owner.username}
+                br
+                span #{video.meta.views}회  
+>>>>>>> 3d56e735527d06c899ce66371cd52eb613986432
                 span #{video.createdAt}
