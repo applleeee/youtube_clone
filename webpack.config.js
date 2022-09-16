@@ -7,6 +7,7 @@ module.exports = {
     videoPlayer: "./src/front/js/videoPlayer.js",
     recorder: "./src/front/js/recorder.js",
     fileUrl: "./src/front/js/fileUrl.js",
+    commentSection: "./src/front/js/commentSection.js",
   },
   mode: "development",
   watch: true,
