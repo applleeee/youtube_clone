@@ -17,6 +17,8 @@ app.set("views", process.cwd() + "/src/views");
 
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+// app.use(express.text()); 웹에서 온 텍스트 읽음(두 가지 이상 정보 받아 객체 형태로 만들 수가 없음)
+app.use(express.json()); // 대신 .json 사용
 
 //세션 사용(express-session) 로그인한 유저 정보 저장
 app.use(

@@ -1,7 +1,7 @@
 extends base.pug
 
 block content
-    div#videoContainer(data-id=video._id)
+    div#videoContainer(data-id=video._id, tabindex="0")
         video(src="/" + video.fileUrl)
         div#videoControls.videoControls
             div.videoControls__play
@@ -20,22 +20,30 @@ block content
                 span#fullScreen
                     i.fas.fa-expand
 
-    div
-        p=video.description 
-        small=video.createdAt
-    div 
-        small Uploaded by 
-            a(href=`/users/${video.owner._id}`)=video.owner.name
-    if String(video.owner._id) === String(loggedInUser._id)
-        a(href=`${video.id}/edit`) Edit Video &rarr;
-        br
-        a(href=`${video.id}/delete`) Delete Video &rarr;
+    div.video__metadata
+        div
+            span=video.description 
+            span=video.createdAt
+        div 
+            small Uploaded by 
+                a(href=`/users/${video.owner._id}`)=video.owner.name
+    
+    div.video__edit            
+        if String(video.owner._id) === String(loggedInUser._id)
+            a(href=`${video.id}/edit`) 영상 수정
+            a(href=`${video.id}/delete`) 영상 삭제
 
     if loggedIn
-        div.video__comments
+        div.video__comments__input
             form.video__comment-form#commentForm
                 textarea(cols="30", rows="10" placeholder="댓글을 남겨주세요...") 
                 button 등록
+
+    div.video__comments
+        ul 
+            each comment in video.comments.reverse()
+                li.video__comment
+                    span #{comment.text}
 
 block scripts
     script(src="/assets/js/videoPlayer.js")

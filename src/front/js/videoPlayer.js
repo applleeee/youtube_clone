@@ -114,9 +114,8 @@ const handlePlayDown = (event) => {
 };
 
 const handleEnded = () => {
-  const { videoid } = videoContainer.dataset;
-  console.log(videoid);
-  fetch(`/api/videos/${videoid}/view`, { method: "POST" });
+  const { id } = videoContainer.dataset;
+  fetch(`/api/videos/${id}/view`, { method: "POST" });
 };
 
 playBtn.addEventListener("click", handlePlayClick);
@@ -130,4 +129,4 @@ videoContainer.addEventListener("mouseleave", handleMouseLeave);
 video.addEventListener("click", handlePlayClick);
 timeline.addEventListener("input", handelTimelineChange);
 fullScreen.addEventListener("click", handleFullScreen);
-document.addEventListener("keydown", handlePlayDown); //왜 document로 해야?
+videoContainer.addEventListener("keydown", handlePlayDown);

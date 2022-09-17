@@ -1,7 +1,7 @@
 import Video from "../models/video";
+import Comment from "../models/Comment";
 import User from "../models/User";
 import moment from "moment";
-import { async } from "regenerator-runtime";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
@@ -12,7 +12,8 @@ export const home = async (req, res) => {
 
 export const watch = async (req, res) => {
   const id = req.params.id;
-  const video = await Video.findById(id).populate("owner");
+  const video = await Video.findById(id).populate("owner").populate("comments");
+  console.log(video);
   if (video) {
     return res.render("watch", { pageTitle: video.title, video });
   } else {
@@ -132,8 +133,26 @@ export const registerView = async (req, res) => {
   return res.sendStatus(200);
 };
 
-export const createComment = (req, res) => {
-  console.log(req.body);
-  console.log(req.params);
-  res.end();
+// 영상 댓글 작성
+export const createComment = async (req, res) => {
+  const {
+    session: { user },
+    body: { text },
+    params: { id },
+  } = req;
+
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+
+  const comment = await Comment.create({
+    text,
+    owner: user._id,
+    video: id,
+  });
+
+  video.comments.push(comment._id);
+  video.save();
+  return res.sendStatus(201);
 };
