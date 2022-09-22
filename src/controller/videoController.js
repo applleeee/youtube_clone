@@ -2,6 +2,7 @@ import Video from "../models/video";
 import Comment from "../models/Comment";
 import User from "../models/User";
 import moment from "moment";
+import { async } from "regenerator-runtime";
 
 export const home = async (req, res) => {
   const videos = await Video.find({})
@@ -146,6 +147,8 @@ export const createComment = async (req, res) => {
     return res.sendStatus(404);
   }
 
+  const userDB = await User.findById(user._id);
+
   const comment = await Comment.create({
     text,
     owner: user._id,
@@ -153,6 +156,34 @@ export const createComment = async (req, res) => {
   });
 
   video.comments.push(comment._id);
+  userDB.comments.push(comment._id);
   video.save();
-  return res.sendStatus(201);
+  userDB.save();
+  return res.status(201).json({ newCommentId: comment._id });
+};
+
+// 영상 댓글 삭제
+export const deleteComment = async (req, res) => {
+  const userId = req.session.user._id;
+  const videoId = req.params.id;
+  const commentId = req.body.commentId;
+
+  const comment = await Comment.findById(commentId).populate("owner");
+  const video = await Video.findById(videoId);
+  const user = await User.findById(userId);
+
+  if (String(userId) !== String(comment.owner._id)) {
+    return res.status(403).redirect("/");
+  }
+  if (!video) {
+    return res.status(404).redirect("/");
+  }
+
+  video.comments.splice(video.comments.indexOf(commentId), 1);
+  user.comments.splice(user.comments.indexOf(commentId), 1);
+  await video.save();
+  await user.save();
+  await Comment.findByIdAndDelete(commentId);
+
+  return res.sendStatus(200);
 };
